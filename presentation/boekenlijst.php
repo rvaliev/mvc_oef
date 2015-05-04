@@ -25,7 +25,9 @@
     ?>
         <tr>
             <td>
-                <?= $boek->getTitel(); ?>
+                <a href="updateboek.php?id=<?= $boek->getId(); ?>">
+                    <?= $boek->getTitel(); ?>
+                </a>
             </td>
             <td>
                 <?php

@@ -149,7 +149,26 @@ class BoekDAO
 
 
 
+    public function update($boek)
+    {
+        self::connectToDB();
+        $this->sql = "UPDATE mvc_boeken SET titel = ?, genre_id = ? WHERE id = ?";
 
+
+
+        try {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($boek[0]->getTitel(), $boek[0]->getGenre()[0]->getId(), $boek[0]->getId()));
+
+            $this->handler = null;
+            $this->query->closeCursor();
+            return true;
+
+        } catch (Exception $e) {
+            echo "Error: Ошибка с запросом";
+            return false;
+        }
+    }
 
 
 }

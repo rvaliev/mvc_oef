@@ -1,11 +1,12 @@
 <?php
 
-require_once('data/GenreDAO.class.php');
+require_once('services/BoekService.class.php');
+
+$obj = new BoekService();
 
 
-$obj = new GenreDAO();
 
 echo "<pre>";
-print_r($obj->getById(2));
+print_r($obj->haalBoekOp(2));
 echo "</pre>";
 

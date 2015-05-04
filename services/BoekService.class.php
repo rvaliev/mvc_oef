@@ -25,4 +25,23 @@ class BoekService
         $BoekDAO = new BoekDAO();
         $BoekDAO->delete($id);
     }
+
+
+    public function haalBoekOp($id)
+    {
+        $boekDAO = new BoekDAO();
+        $boek = $boekDAO->getById($id);
+        return $boek;  // returns the whole object
+    }
+
+    public function updateBoek($id, $titel, $genreId)
+    {
+        $genreDAO = new GenreDAO();
+        $boekDAO = new BoekDAO();
+        $genre = $genreDAO->getById($genreId); // returns the whole object
+        $boek = $boekDAO->getById($id);  // returns the whole object
+        $boek[0]->setTitel($titel);
+        $boek[0]->setGenre($genre);
+        $boekDAO->update($boek);
+    }
 }
